@@ -1,0 +1,5 @@
+practica2
+*.o
+*.exe
+build/
+*.pro.user
