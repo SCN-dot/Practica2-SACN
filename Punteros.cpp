@@ -123,7 +123,7 @@ long sumaGrupos(const char *cadena, int n) {
 void inicializarSala(char *sala, int totalCeldas) {
     char *p = sala;
     for (int i = 0; i < totalCeldas; i++) {
-        *(p + i) = '-';
+        *(p + i) = '-'; //disponible cada asiento
     }
 }
 
@@ -139,8 +139,7 @@ void imprimirSala(const char *sala, int filas, int asientos) {
     }
 }
 
-bool cambiarEstadoAsiento(char *sala, int fila, int asiento, int asientosPorFila,
-                           char estadoRequerido, char nuevoEstado) {
+bool cambiarEstadoAsiento(char *sala, int fila, int asiento, int asientosPorFila, char estadoRequerido, char nuevoEstado) {
     char *celda = sala + fila * asientosPorFila + asiento;
     if (*celda != estadoRequerido) return false;
     *celda = nuevoEstado;
@@ -152,7 +151,8 @@ int contarEstrellas(const int *imagen, int filas, int columnas) {
     int contador = 0;
 
     for (int i = 1; i < filas - 1; i++) {
-        for (int j = 1; j < columnas - 1; j++) {
+        for (int j = 1; j < columnas - 1; j++)//exclui bordes
+        {
             const int *centro = imagen + i * columnas + j;
 
             int suma = *centro
@@ -171,22 +171,44 @@ int contarEstrellas(const int *imagen, int filas, int columnas) {
 
 //15
 void interseccionRectangulos(const int *A, const int *B, int *C) {
-    int x1 = (*(A + 0) > *(B + 0)) ? *(A + 0) : *(B + 0);
-    int y1 = (*(A + 1) > *(B + 1)) ? *(A + 1) : *(B + 1);
+    int x1;// inicio de C
+    if (*(A + 0) > *(B + 0)) {
+        x1 = *(A + 0);
+    } else {
+        x1 = *(B + 0);
+    }
 
-    int finXA = *(A + 0) + *(A + 2);
+    int y1;
+    if (*(A + 1) > *(B + 1)) {
+        y1 = *(A + 1);
+    } else {
+        y1 = *(B + 1);
+    }
+
+    int finXA = *(A + 0) + *(A + 2);//derecha
     int finXB = *(B + 0) + *(B + 2);
-    int finYA = *(A + 1) + *(A + 3);
+    int finYA = *(A + 1) + *(A + 3);//abajo
     int finYB = *(B + 1) + *(B + 3);
 
-    int x2 = (finXA < finXB) ? finXA : finXB;
-    int y2 = (finYA < finYB) ? finYA : finYB;
+    int x2;
+    if (finXA < finXB) {
+        x2 = finXA;
+    } else {
+        x2 = finXB;
+    }
+
+    int y2;
+    if (finYA < finYB) {
+        y2 = finYA;
+    } else {
+        y2 = finYB;
+    }
 
     if (x2 > x1 && y2 > y1) {
         *(C + 0) = x1;
         *(C + 1) = y1;
-        *(C + 2) = x2 - x1;
-        *(C + 3) = y2 - y1;
+        *(C + 2) = x2 - x1; //ancho de C
+        *(C + 3) = y2 - y1; // Alto de C
     } else {
         *(C + 0) = 0;
         *(C + 1) = 0;

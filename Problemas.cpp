@@ -121,10 +121,10 @@ void P11() {
 
             if (filaChar >= 'a' && filaChar <= 'z') {
                 filaChar = filaChar - 'a' + 'A';
-            }
+            } // minus a mayus
 
-            int f = filaChar - 'A';
-            int a = asiento - 1;
+            int f = filaChar - 'A'; //indices letra
+            int a = asiento - 1; //indice asiento
 
             if (f < 0 || f >= FILAS || a < 0 || a >= ASIENTOS) {
                 cout << "Fila o asiento invalido" << endl;
@@ -203,7 +203,8 @@ void P17() {
         if (b != a && b > a && b < limite) {
             long sumaB;
             calcularSumaDivisores(b, &sumaB);
-            if (sumaB == a) {
+            if (sumaB == a) //amigables
+            {
                 sumaTotal += a + b;
             }
         }
