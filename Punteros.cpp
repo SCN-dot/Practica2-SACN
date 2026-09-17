@@ -18,7 +18,7 @@ int longitudCadena(const char *cadena) {
     int longitud = 0;
     while (*p != '\0') {
         longitud++;
-        p++;
+        p++; //siguiente byte
     }
     return longitud;
 }

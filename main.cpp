@@ -21,7 +21,7 @@ int main() {
             case 13: P13(); break;
             case 15: P15(); break;
             case 17: P17(); break;
-            default: cout << "Opcion invalida." << endl;
+            default: cout << "Opcion invalida" << endl;
         }
 
         cout << "\nEjecutar otro problema (s/n): ";

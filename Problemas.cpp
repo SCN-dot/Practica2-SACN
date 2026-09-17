@@ -39,10 +39,11 @@ void P3() {
     cout << "Ingrese la segunda cadena: ";
     cin >> cad2;
 
-    if (compararCadenas(cad1, cad2))
+    if (compararCadenas(cad1, cad2)){
         cout << "Las cadenas son iguales." << endl;
-    else
+    }else{
         cout << "Las cadenas son diferentes." << endl;
+    }
 }
 
 //5
@@ -99,11 +100,10 @@ void P11() {
     int opcion;
 
     do {
-        cout << "\n--- Sala de Cine ---" << endl;
-        cout << "1. Ver sala" << endl;
-        cout << "2. Reservar asiento" << endl;
-        cout << "3. Cancelar reserva" << endl;
-        cout << "4. Volver al menu principal" << endl;
+        cout << "1. Ver sala " << endl;
+        cout << "2. Reservar asiento " << endl;
+        cout << "3. Cancelar reserva " << endl;
+        cout << "4. Salir " << endl;
         cout << "Seleccione una opcion: ";
         cin >> opcion;
 
@@ -127,22 +127,22 @@ void P11() {
             int a = asiento - 1;
 
             if (f < 0 || f >= FILAS || a < 0 || a >= ASIENTOS) {
-                cout << "Fila o asiento invalido." << endl;
+                cout << "Fila o asiento invalido" << endl;
             } else if (opcion == 2) {
                 bool exito = cambiarEstadoAsiento(sala, f, a, ASIENTOS, '-', '+');
                 if (exito)
-                    cout << "Asiento reservado con exito." << endl;
+                    cout << "Asiento reservado con exito" << endl;
                 else
-                    cout << "El asiento ya esta reservado." << endl;
+                    cout << "El asiento ya esta reservado" << endl;
             } else {
                 bool exito = cambiarEstadoAsiento(sala, f, a, ASIENTOS, '+', '-');
                 if (exito)
-                    cout << "Reserva cancelada con exito." << endl;
+                    cout << "Reserva cancelada con exito" << endl;
                 else
-                    cout << "El asiento no tiene reserva." << endl;
+                    cout << "El asiento no tiene reserva" << endl;
             }
         } else if (opcion != 4) {
-            cout << "Opcion invalida." << endl;
+            cout << "Opcion invalida" << endl;
         }
 
     } while (opcion != 4);
@@ -180,17 +180,17 @@ void P15() {
     interseccionRectangulos(A, B, C);
 
     if (C[2] > 0 && C[3] > 0) {
-        cout << "Rectangulo interseccion C: {" << C[0] << ", " << C[1]
-             << ", " << C[2] << ", " << C[3] << "}" << endl;
-    } else {
-        cout << "Los rectangulos no se intersectan." << endl;
+        cout << "Rectangulo interseccion C: {" << C[0] << ", " << C[1] << ", " << C[2] << ", " << C[3] << "}" << endl;
+    }
+    else {
+        cout << "Los rectangulos no se intersectan" << endl;
     }
 }
 
 //17
 void P17() {
     int limite;
-    cout << "Ingrese un numero: ";
+    cout << "Ingrese un numero:  ";
     cin >> limite;
 
     long sumaTotal = 0;
@@ -209,5 +209,5 @@ void P17() {
         }
     }
 
-    cout << "El resultado de la suma es: " << sumaTotal << endl;
+    cout << "El resultado de la suma es:  " << sumaTotal << endl;
 }
